@@ -30,6 +30,7 @@
   "homepage": "https://github.com/IgorCRD/readable_frontend_parcel#readme",
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7"
   }
 }
