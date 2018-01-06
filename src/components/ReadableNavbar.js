@@ -20,7 +20,11 @@ const ReadableNavbar = () => (
                 </NavItem>
             </CustomBootstrapNavbar.Nav>
             <CustomBootstrapNavbar.Nav pullRight>
-                <CustomBootstrapNavbar.NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                <CustomBootstrapNavbar.NavDropdown
+                    eventKey={3}
+                    title="Dropdown"
+                    id="basic-nav-dropdown"
+                >
                     <MenuItem eventKey={3.1}>Action</MenuItem>
                     <MenuItem eventKey={3.2}>Another action</MenuItem>
                     <MenuItem eventKey={3.3}>Something else here</MenuItem>

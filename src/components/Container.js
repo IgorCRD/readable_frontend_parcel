@@ -7,17 +7,17 @@ const Container = styled.div`
     margin-right: auto;
     margin-left: auto;
 
-    :after{
+    :after {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         display: table;
-        content: " ";
+        content: ' ';
         clear: both;
     }
-    :before{
+    :before {
         display: table;
-        content: " ";
+        content: ' ';
     }
 
     @media (min-width: 768px) {

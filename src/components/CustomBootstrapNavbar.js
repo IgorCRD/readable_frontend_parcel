@@ -13,14 +13,15 @@ const CustomNavbar = styled(Navbar)`
     font-size: 16px;
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
-    color: #FFFFFF !important;
+    color: #ffffff !important;
 
     border-bottom: ${props => (props.transparent ? '1px solid transparent' : '')};
 
-    @media (max-width: 767px){
+    @media (max-width: 767px) {
         -webkit-backface-visibility: hidden;
         padding-top: ${props => (props.transparent ? '0px' : '15px')};
-        background-color: ${props => (props.transparent ? 'rgba(0, 0, 0, 0.98)' : 'rgba(52, 172, 220, 0.98)')}; 
+        background-color: ${props =>
+        (props.transparent ? 'rgba(0, 0, 0, 0.98)' : 'rgba(52, 172, 220, 0.98)')};
     }
 
     .navbar-nav > li > a {
@@ -28,12 +29,13 @@ const CustomNavbar = styled(Navbar)`
         margin: 15px 3px;
     }
 
-    .navbar-brand, [class*="navbar-ct"] .navbar-brand {
-        color: #FFFFFF;
+    .navbar-brand,
+    [class*='navbar-ct'] .navbar-brand {
+        color: #ffffff;
         opacity: 0.9;
         filter: alpha(opacity=90);
     }
-    
+
     .navbar-brand {
         font-weight: 600;
         margin: 5px 0px;
@@ -41,19 +43,22 @@ const CustomNavbar = styled(Navbar)`
         font-size: 20px;
     }
 
-    .navbar-toggle:focus, .navbar-toggle:hover {
+    .navbar-toggle:focus,
+    .navbar-toggle:hover {
         color: white;
         opacity: 1;
         background-color: transparent;
     }
 
-    .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus {
         color: white;
         opacity: 1;
         background-color: transparent;
     }
 
-    .navbar-nav > .open > a:focus, .navbar-nav > .open > a:hover {
+    .navbar-nav > .open > a:focus,
+    .navbar-nav > .open > a:hover {
         color: white;
         opacity: 1;
         background-color: transparent;
@@ -69,11 +74,11 @@ const NavbarPlaceHolder = styled.div`
 class CustomBootstrapNavbar extends Navbar {
     static propTypes = {
         children: PropTypes.arrayOf(PropTypes.object),
-    }
+    };
 
     static defaultProps = {
         children: null,
-    }
+    };
 
     state = {
         scrollTop: 0,
@@ -100,20 +105,19 @@ class CustomBootstrapNavbar extends Navbar {
         this.setState({
             scrollTop: document.documentElement.scrollTop,
         });
-    }
+    };
 
     render() {
         return (
             <Fragment>
                 <NavbarPlaceHolder
                     height={this.state.height}
-                    innerRef={(ref) => { this.nav = ref; }}
+                    innerRef={(ref) => {
+                        this.nav = ref;
+                    }}
                 />
-                <CustomNavbar
-                    fixedTop
-                    transparent={this.state.scrollTop <= this.state.height / 3}
-                >
-                    { this.props.children }
+                <CustomNavbar fixedTop transparent={this.state.scrollTop <= this.state.height / 3}>
+                    {this.props.children}
                 </CustomNavbar>
             </Fragment>
         );
@@ -121,12 +125,12 @@ class CustomBootstrapNavbar extends Navbar {
 }
 
 CustomBootstrapNavbar.Brand = styled(Navbar.Brand)`
-    color: #FFFFFF !important;
+    color: #ffffff !important;
     opacity: 0.9;
     filter: alpha(opacity=90);
     font-weight: 600;
     font-size: 20px;
-    
+
     @media (max-width: 767px) {
         margin: 5px 0px;
         padding: 20px 15px;
@@ -135,7 +139,7 @@ CustomBootstrapNavbar.Brand = styled(Navbar.Brand)`
 
 CustomBootstrapNavbar.Toggle = styled(Navbar.Toggle)`
     > .icon-bar {
-        background-color: #FFFFFF !important;
+        background-color: #ffffff !important;
     }
     margin-top: 19px;
     margin-bottom: 19px;
@@ -150,27 +154,33 @@ CustomBootstrapNavbar.Toggle = styled(Navbar.Toggle)`
 `;
 
 CustomBootstrapNavbar.Nav = styled(Nav)`
-
     > li > .dropdown-menu {
         border-radius: 10px;
         margin-top: -5px;
     }
 
-    > li > a:not(.btn), .navbar-transparent .navbar-nav > li > a.btn-default, [class*="navbar-ct"] .navbar-nav > li > a:not(.btn), [class*="navbar-ct"] .navbar-nav > li > a.btn-default {
-        color: #FFFFFF;
-        border-color: #FFFFFF;
+    > li > a:not(.btn),
+    .navbar-transparent .navbar-nav > li > a.btn-default,
+    [class*='navbar-ct'] .navbar-nav > li > a:not(.btn),
+    [class*='navbar-ct'] .navbar-nav > li > a.btn-default {
+        color: #ffffff;
+        border-color: #ffffff;
         opacity: 0.7;
         filter: alpha(opacity=70);
         -webkit-filter: alpha(opacity=70);
     }
 
-    @media (max-width: 767px){
-        > li > a, > li > a:hover, > li > a:focus, .open .dropdown-menu > li > a{
+    @media (max-width: 767px) {
+        > li > a,
+        > li > a:hover,
+        > li > a:focus,
+        .open .dropdown-menu > li > a {
             opacity: 0.7;
             background: transparent;
         }
 
-        .open .dropdown-menu > li > a:hover, .open .dropdown-menu > li > a:focus{
+        .open .dropdown-menu > li > a:hover,
+        .open .dropdown-menu > li > a:focus {
             opacity: 1;
             background: transparent;
         }
@@ -179,13 +189,15 @@ CustomBootstrapNavbar.Nav = styled(Nav)`
             line-height: 20px;
         }
 
-        .open .dropdown-menu > li > a, .open .dropdown-menu .dropdown-header {
+        .open .dropdown-menu > li > a,
+        .open .dropdown-menu .dropdown-header {
             padding: 5px 15px 5px 25px;
         }
     }
-    
-    @media (min-width: 768px){
-        > li.open > .dropdown-menu, .dropdown.open .dropdown-menu {
+
+    @media (min-width: 768px) {
+        > li.open > .dropdown-menu,
+        .dropdown.open .dropdown-menu {
             -webkit-transform: scale(1);
             -moz-transform: scale(1);
             -o-transform: scale(1);
@@ -200,8 +212,9 @@ CustomBootstrapNavbar.Nav = styled(Nav)`
             filter: alpha(opacity=100);
             visibility: visible;
         }
-        
-        > li > .dropdown-menu, .dropdown .dropdown-menu {
+
+        > li > .dropdown-menu,
+        .dropdown .dropdown-menu {
             -webkit-transform: scale(0);
             -moz-transform: scale(0);
             -o-transform: scale(0);
@@ -220,16 +233,16 @@ CustomBootstrapNavbar.Nav = styled(Nav)`
 
         .open .dropdown-menu > li > a {
             padding: 5px 15px 5px 25px;
-            opacity: .8;
+            opacity: 0.8;
             background: transparent;
             color: #111111;
         }
 
         > li > .dropdown-menu:after {
-            border-bottom: 11px solid #FFFFFF;
+            border-bottom: 11px solid #ffffff;
             border-left: 11px solid transparent;
             border-right: 11px solid transparent;
-            content: "";
+            content: '';
             display: inline-block;
             position: absolute;
             left: 12px;
@@ -255,10 +268,10 @@ CustomBootstrapNavbar.NavDropdown = styled(NavDropdown)`
         color: #333333;
     }
 
-    @media (max-width: 767px){
+    @media (max-width: 767px) {
         .dropdown-menu > li > a {
             padding: 5px 15px 5px 25px;
-            opacity: .7;
+            opacity: 0.7;
             background: transparent;
             color: white !important;
         }
