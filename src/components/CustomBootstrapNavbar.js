@@ -40,6 +40,24 @@ const CustomNavbar = styled(Navbar)`
         padding: 20px 15px;
         font-size: 20px;
     }
+
+    .navbar-toggle:focus, .navbar-toggle:hover {
+        color: white;
+        opacity: 1;
+        background-color: transparent;
+    }
+
+    .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+        color: white;
+        opacity: 1;
+        background-color: transparent;
+    }
+
+    .navbar-nav > .open > a:focus, .navbar-nav > .open > a:hover {
+        color: white;
+        opacity: 1;
+        background-color: transparent;
+    }
 `;
 CustomNavbar.propTypes = { transparent: PropTypes.bool };
 
@@ -48,7 +66,7 @@ const NavbarPlaceHolder = styled.div`
     background-color: black;
 `;
 
-class NavbarTransparent extends Navbar {
+class CustomBootstrapNavbar extends Navbar {
     static propTypes = {
         children: PropTypes.arrayOf(PropTypes.object),
     }
@@ -102,7 +120,7 @@ class NavbarTransparent extends Navbar {
     }
 }
 
-NavbarTransparent.Brand = styled(Navbar.Brand)`
+CustomBootstrapNavbar.Brand = styled(Navbar.Brand)`
     color: #FFFFFF !important;
     opacity: 0.9;
     filter: alpha(opacity=90);
@@ -115,7 +133,7 @@ NavbarTransparent.Brand = styled(Navbar.Brand)`
     }
 `;
 
-NavbarTransparent.Toggle = styled(Navbar.Toggle)`
+CustomBootstrapNavbar.Toggle = styled(Navbar.Toggle)`
     > .icon-bar {
         background-color: #FFFFFF !important;
     }
@@ -131,7 +149,7 @@ NavbarTransparent.Toggle = styled(Navbar.Toggle)`
     }
 `;
 
-NavbarTransparent.Nav = styled(Nav)`
+CustomBootstrapNavbar.Nav = styled(Nav)`
 
     > li > .dropdown-menu {
         border-radius: 10px;
@@ -141,18 +159,19 @@ NavbarTransparent.Nav = styled(Nav)`
     > li > a:not(.btn), .navbar-transparent .navbar-nav > li > a.btn-default, [class*="navbar-ct"] .navbar-nav > li > a:not(.btn), [class*="navbar-ct"] .navbar-nav > li > a.btn-default {
         color: #FFFFFF;
         border-color: #FFFFFF;
-        opacity: 0.8;
-        filter: alpha(opacity=80);
-        -webkit-filter: alpha(opacity=80);
-
-        &:hover {
-            opacity: 1 !important;
-        }
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        -webkit-filter: alpha(opacity=70);
     }
 
     @media (max-width: 767px){
-        > li > a, > li > a:hover, > li > a:focus, .open .dropdown-menu > li > a, .open .dropdown-menu > li > a:hover, .open .dropdown-menu > li > a:focus{
-            opacity: .7;
+        > li > a, > li > a:hover, > li > a:focus, .open .dropdown-menu > li > a{
+            opacity: 0.7;
+            background: transparent;
+        }
+
+        .open .dropdown-menu > li > a:hover, .open .dropdown-menu > li > a:focus{
+            opacity: 1;
             background: transparent;
         }
 
@@ -199,6 +218,13 @@ NavbarTransparent.Nav = styled(Nav)`
             display: block;
         }
 
+        .open .dropdown-menu > li > a {
+            padding: 5px 15px 5px 25px;
+            opacity: .8;
+            background: transparent;
+            color: #111111;
+        }
+
         > li > .dropdown-menu:after {
             border-bottom: 11px solid #FFFFFF;
             border-left: 11px solid transparent;
@@ -212,7 +238,12 @@ NavbarTransparent.Nav = styled(Nav)`
     }
 `;
 
-NavbarTransparent.NavDropdown = styled(NavDropdown)`
+CustomBootstrapNavbar.NavDropdown = styled(NavDropdown)`
+    .dropdown-menu > li:first-child > a {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
     .dropdown-menu > li:first-child > a {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -220,8 +251,8 @@ NavbarTransparent.NavDropdown = styled(NavDropdown)`
 
     .dropdown-menu > li > a {
         background-color: white;
-        padding: 8px 16px !important;
-        color: #333333 !important;
+        padding: 8px 16px;
+        color: #333333;
     }
 
     @media (max-width: 767px){
@@ -234,4 +265,4 @@ NavbarTransparent.NavDropdown = styled(NavDropdown)`
     }
 `;
 
-export default NavbarTransparent;
+export default CustomBootstrapNavbar;
