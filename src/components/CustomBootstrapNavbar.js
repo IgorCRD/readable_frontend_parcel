@@ -92,9 +92,9 @@ class CustomBootstrapNavbar extends Navbar {
                 height: this.nav.nextElementSibling.clientHeight,
             });
         });
-        this.setState({
+        this.setState(() => ({
             height: this.nav.nextElementSibling.clientHeight,
-        });
+        }));
     }
 
     componentWillUnmount() {
