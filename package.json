@@ -8,9 +8,20 @@
         "url": "git+https://github.com/IgorCRD/readable_frontend_parcel.git"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest",
         "start": "parcel ./public/index.html",
         "build": "parcel build ./public/index.html"
+    },
+    "jest": {
+        "testPathIgnorePatterns": [
+            "<rootDir>/node_modules/",
+            "<rootDir>/.cache",
+            "<rootDir>/dist",
+            "<rootDir>/build"
+        ],
+        "setupFiles": [
+            "<rootDir>/tests/setupTests.js"
+        ]
     },
     "author": "IgorCRD",
     "license": "ISC",
@@ -25,6 +36,7 @@
         "eslint-plugin-import": "^2.8.0",
         "eslint-plugin-jsx-a11y": "^6.0.3",
         "eslint-plugin-react": "^7.5.1",
+        "jest-cli": "^22.1.2",
         "parcel-bundler": "^1.4.1",
         "prettier": "^1.10.2",
         "prettier-eslint": "^8.7.4"
@@ -34,12 +46,15 @@
     },
     "homepage": "https://github.com/IgorCRD/readable_frontend_parcel#readme",
     "dependencies": {
+        "babel-polyfill": "^6.26.0",
         "prop-types": "^15.6.0",
         "react": "^16.2.0",
         "react-bootstrap": "^0.32.0",
         "react-dom": "^16.2.0",
         "react-icons": "^2.2.7",
         "styled-components": "^2.4.0",
-        "throttle-debounce": "^1.0.1"
+        "throttle-debounce": "^1.0.1",
+        "uuid": "^3.2.1",
+        "whatwg-fetch": "^2.0.3"
     }
 }
