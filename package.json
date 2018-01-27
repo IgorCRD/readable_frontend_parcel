@@ -36,6 +36,7 @@
         "eslint-plugin-import": "^2.8.0",
         "eslint-plugin-jsx-a11y": "^6.0.3",
         "eslint-plugin-react": "^7.5.1",
+        "jest": "^22.1.4",
         "jest-cli": "^22.1.2",
         "parcel-bundler": "^1.4.1",
         "prettier": "^1.10.2",

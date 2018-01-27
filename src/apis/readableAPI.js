@@ -58,18 +58,15 @@ class ReadableAPIWrapper {
 
     publishPost = newPost =>
         fetch(`${this.apiURL}/posts`, {
-            headers: { ...this.headers },
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
             method: 'POST',
             body: JSON.stringify({ ...newPost }),
         })
-            .then((res) => {
-                console.log(res);
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data);
-                return data;
-            });
+            .then(res => res.json())
+            .then(data => data);
 }
 
 export const ReadableAPI = new ReadableAPIWrapper();
