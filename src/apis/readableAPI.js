@@ -11,7 +11,7 @@ class ReadableAPIWrapper {
     };
 
     constructor(authToken, apiURL) {
-        if (!localStorage.token) {
+        if (!localStorage.token || localStorage !== authToken) {
             localStorage.token = authToken || ReadableAPIWrapper.defaults.token;
         }
 
@@ -37,24 +37,18 @@ class ReadableAPIWrapper {
 
         return fetch(`${this.apiURL}/${path}/posts`, {
             headers: { ...this.headers },
-        })
-            .then(res => res.json())
-            .then(data => data);
+        }).then(res => res.json());
     };
 
     getAllPosts = () =>
         fetch(`${this.apiURL}/posts`, {
             headers: { ...this.headers },
-        })
-            .then(res => res.json())
-            .then(data => data);
+        }).then(res => res.json());
 
     getPostById = id =>
         fetch(`${this.apiURL}/posts/${id}`, {
             headers: { ...this.headers },
-        })
-            .then(res => res.json())
-            .then(data => data);
+        }).then(res => res.json());
 
     publishPost = newPost =>
         fetch(`${this.apiURL}/posts`, {
@@ -64,9 +58,21 @@ class ReadableAPIWrapper {
             },
             method: 'POST',
             body: JSON.stringify({ ...newPost }),
-        })
-            .then(res => res.json())
-            .then(data => data);
+        }).then(res => res.json());
+
+    votePost = (id, vote) =>
+        fetch(`${this.apiURL}/posts/${id}`, {
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ option: vote }),
+        }).then(res => res.json());
+
+    upVotePost = id => this.votePost(id, 'upVote');
+
+    downVotePost = id => this.votePost(id, 'downVote');
 }
 
 export const ReadableAPI = new ReadableAPIWrapper();
