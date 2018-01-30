@@ -50,15 +50,20 @@ class ReadableAPIWrapper {
             headers: { ...this.headers },
         }).then(res => res.json());
 
-    publishPost = newPost =>
-        fetch(`${this.apiURL}/posts`, {
+    publishPost = (newPost) => {
+        const post = { ...newPost };
+        if (!post.id) {
+            post.id = this.generateGuid();
+        }
+        return fetch(`${this.apiURL}/posts`, {
             headers: {
                 ...this.headers,
                 'content-type': 'application/json',
             },
             method: 'POST',
-            body: JSON.stringify({ ...newPost }),
+            body: JSON.stringify({ ...post }),
         }).then(res => res.json());
+    };
 
     votePost = (id, vote) =>
         fetch(`${this.apiURL}/posts/${id}`, {
@@ -73,6 +78,78 @@ class ReadableAPIWrapper {
     upVotePost = id => this.votePost(id, 'upVote');
 
     downVotePost = id => this.votePost(id, 'downVote');
+
+    editPost = (id, editedPost) =>
+        fetch(`${this.apiURL}/posts/${id}`, {
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
+            method: 'PUT',
+            body: JSON.stringify({ ...editedPost }),
+        }).then(res => res.json());
+
+    deletePost = id =>
+        fetch(`${this.apiURL}/posts/${id}`, {
+            headers: {
+                ...this.headers,
+            },
+            method: 'DELETE',
+        }).then(res => res.json());
+
+    getAllComments = id =>
+        fetch(`${this.apiURL}/posts/${id}/comments`, {
+            headers: {
+                ...this.headers,
+            },
+        }).then(res => res.json());
+
+    commentPost = (id, newComment) => {
+        const comment = { ...newComment, parentId: id };
+        if (!comment.id) {
+            comment.id = this.generateGuid();
+        }
+        return fetch(`${this.apiURL}/comments`, {
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ ...comment }),
+        }).then(res => res.json());
+    };
+
+    voteComment = (id, vote) =>
+        fetch(`${this.apiURL}/comments/${id}`, {
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ option: vote }),
+        }).then(res => res.json());
+
+    upVoteComment = id => this.voteComment(id, 'upVote');
+
+    downVoteComment = id => this.voteComment(id, 'downVote');
+
+    deleteComment = id =>
+        fetch(`${this.apiURL}/comments/${id}`, {
+            headers: {
+                ...this.headers,
+            },
+            method: 'DELETE',
+        }).then(res => res.json());
+
+    editComment = (id, editedComment) =>
+        fetch(`${this.apiURL}/comments/${id}`, {
+            headers: {
+                ...this.headers,
+                'content-type': 'application/json',
+            },
+            method: 'PUT',
+            body: JSON.stringify({ ...editedComment }),
+        }).then(res => res.json());
 }
 
 export const ReadableAPI = new ReadableAPIWrapper();

@@ -19,9 +19,7 @@
             "<rootDir>/dist",
             "<rootDir>/build"
         ],
-        "setupFiles": [
-            "<rootDir>/tests/setupTests.js"
-        ]
+        "setupFiles": ["<rootDir>/tests/setupTests.js"]
     },
     "author": "IgorCRD",
     "license": "ISC",
